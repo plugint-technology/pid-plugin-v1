@@ -1,1 +1,2 @@
-# pid-plugin-v1
+# Primary Information Suite - Identity API Plugin
+APi reference: https://i.primary.com.ar/pid/landing
