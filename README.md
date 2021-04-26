@@ -55,7 +55,7 @@ Mail: support@plugint.com
 
 ## License
 
-MIT
+[MIT](https://github.com/plugint-technology/primary-information-identity-plugin-v1/blob/main/LICENSE)
 
 
 
@@ -118,4 +118,4 @@ Mail: support@plugint.com
 
 ## License
 
-MIT
+[MIT](https://github.com/plugint-technology/primary-information-identity-plugin-v1/blob/main/LICENSE)
