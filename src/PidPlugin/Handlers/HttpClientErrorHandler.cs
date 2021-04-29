@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace PidPlugin.Handlers
 {
-    public class ExceptionHandler : DelegatingHandler
+    public class HttpClientErrorHandler : DelegatingHandler
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

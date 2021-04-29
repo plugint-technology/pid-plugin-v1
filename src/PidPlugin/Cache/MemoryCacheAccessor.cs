@@ -20,7 +20,6 @@ namespace PidPlugin.Cache
 
         public void Set(string key, object value, TimeSpan expirationTime)
         {
-            System.Diagnostics.Debug.WriteLine("SETTING");
             this.memoryCache.Set(key, value, expirationTime);
         }
     }

@@ -13,6 +13,9 @@ namespace PidPlugin.Extensions
 
         public static IServiceCollection AddPidPlugin(this IServiceCollection services, PidPluginSettings pidPluginSettings)
         {
+            if (pidPluginSettings == null)
+                throw new ArgumentNullException(nameof(pidPluginSettings));
+
             services.Configure<CacheOptions>(options =>
             {
                 options.BankAccountDetailExpiration = TimeSpan.FromMinutes(
@@ -32,9 +35,8 @@ namespace PidPlugin.Extensions
             });
 
             services.AddMemoryCache();
-            services.AddSingleton<ICacheAccessor, MemoryCacheAccessor>();
-            services.AddHttpClient();
-            services.AddTransient<ExceptionHandler>();
+            services.AddTransient<ICacheAccessor, MemoryCacheAccessor>();
+            services.AddTransient<HttpClientErrorHandler>();
 
             services.AddHttpClient<IPidPluginClient, PidPluginClient>()
                 .ConfigureHttpClient(builder =>
@@ -50,7 +52,7 @@ namespace PidPlugin.Extensions
                         pidPluginSettings.SubscriptionKey
                     );
                 })
-                .AddHttpMessageHandler<ExceptionHandler>()
+                .AddHttpMessageHandler<HttpClientErrorHandler>()
                 .AddTransientHttpErrorPolicy(policy =>
                 {
                     return policy.WaitAndRetryAsync(
